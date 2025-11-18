@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from './store';
 import { setSelectedTab } from './store';
@@ -36,6 +35,8 @@ function App() {
     dispatch(setSelectedTab(tab));
   };
 
+  // Removed unused event parameter from onChange handler to fix TS6133 error
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -70,7 +71,7 @@ function App() {
           <BottomNavigation
             showLabels
             value={selectedTab}
-            onChange={(event, newValue) => {
+            onChange={(_, newValue) => {
               handleTabChange(newValue);
             }}
           >
